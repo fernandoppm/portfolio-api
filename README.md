@@ -1,98 +1,68 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Portfolio API - Backend com NestJS e PostgreSQL
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+![NestJS](https://img.shields.io/badge/NestJS-%23E0234E?style=for-the-badge&logo=nestjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-%233178C6?style=for-the-badge&logo=typescript)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![TypeORM](https://img.shields.io/badge/TypeORM-E0234E?style=for-the-badge)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 📋 Descrição
 
-## Description
+Esta é a API RESTful para o projeto "Plataforma de Portfólios". Desenvolvida com **NestJS** e **TypeScript**, esta API oferece um conjunto completo de endpoints para o gerenciamento de portfólios profissionais (CRUD). A persistência de dados é feita em um banco de dados **PostgreSQL**, que é orquestrado via **Docker** para garantir um ambiente de desenvolvimento consistente e fácil de configurar.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## ✨ Funcionalidades
 
-## Project setup
+- **CRUD completo** para a entidade `Portfolio`.
+- **Validação de dados** de entrada usando `class-validator` e DTOs.
+- **Documentação interativa** da API gerada automaticamente com **Swagger (OpenAPI)**.
+- Arquitetura modular e escalável seguindo as melhores práticas do NestJS.
+- Gerenciamento de configurações e segredos através de variáveis de ambiente (`.env`).
 
-```bash
-$ npm install
-```
+## 📖 Documentação da API
 
-## Compile and run the project
+Com o projeto em execução, a documentação completa e interativa da API está disponível em:
 
-```bash
-# development
-$ npm run start
+**`http://localhost:3000/api-docs`**
 
-# watch mode
-$ npm run start:dev
+Lá é possível visualizar todos os endpoints, seus schemas e testá-los diretamente pelo navegador.
 
-# production mode
-$ npm run start:prod
-```
+## ⚙️ Como Executar o Projeto Localmente
 
-## Run tests
+### Pré-requisitos
+* Node.js (v18+)
+* npm
+* Docker Desktop
 
-```bash
-# unit tests
-$ npm run test
+### Passos para a Instalação
 
-# e2e tests
-$ npm run test:e2e
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/](https://github.com/)[SEU-USUARIO]/[NOME-DO-REPOSITORIO].git
+    cd [NOME-DO-REPOSITORIO]
+    ```
 
-# test coverage
-$ npm run test:cov
-```
+2.  **Configurar Variáveis de Ambiente:**
+    Crie uma cópia do arquivo `.env.example` e renomeie para `.env`.
+    ```bash
+    cp .env.example .env
+    ```
+    *O arquivo `.env` já vem com as credenciais padrão para o banco de dados Docker. Você não precisa alterá-lo.*
 
-## Deployment
+3.  **Iniciar o Banco de Dados com Docker:**
+    Certifique-se de que o Docker Desktop está em execução. Em seguida, rode o comando para iniciar o contêiner do PostgreSQL:
+    ```bash
+    docker run --name portfolio-db -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_USER=myuser -e POSTGRES_DB=portfoliodb -p 5432:5432 -d postgres
+    ```
+    *Nota: Se o contêiner `portfolio-db` já existir, remova-o primeiro com `docker rm -f portfolio-db`.*
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+4.  **Instale as dependências do projeto:**
+    ```bash
+    npm install
+    ```
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+5.  **Rode a Aplicação:**
+    ```bash
+    npm run start:dev
+    ```
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+6.  O servidor estará rodando em `http://localhost:3000`.
